@@ -2,17 +2,15 @@ import logging, sys
 from flask import Flask
 
 app = Flask(__name__)
-i = 0
-
 
 sys.stdout = open('log2.log', 'a')
+
 
 
 @app.route("/")
 def hello():
     app.logger.critical("this is a CRITICAL message)")
-    print(i)
-    i += 1
+    print("Okay")
     return "Hello World!"
 
 if __name__ == '__main__':
@@ -32,3 +30,5 @@ if __name__ == '__main__':
 # logger.addHandler(consoleHandler)
 
 # app.logger.handlers = logger
+
+# gunicorn -k gevent -w 5 application:app
