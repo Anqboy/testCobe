@@ -2,15 +2,17 @@ import logging, sys
 from flask import Flask
 
 app = Flask(__name__)
-
+i = 0
 
 
 sys.stdout = open('log2.log', 'a')
 
+
 @app.route("/")
 def hello():
     app.logger.critical("this is a CRITICAL message)")
-    print('Receive a call')
+    print(i)
+    i += 1
     return "Hello World!"
 
 if __name__ == '__main__':
